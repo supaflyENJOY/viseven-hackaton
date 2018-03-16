@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './index.css'
+import MuscleList from '../MusclesList';
+import muscles from '../api/muscles'
+
 
 class MainPart extends Component {
     render(){
         return (<div>
-                <h1>Something</h1>
+                <MuscleList muscles ={muscles}/>
             </div>
             );
     }

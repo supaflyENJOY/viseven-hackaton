@@ -15,7 +15,7 @@ class App extends Component {
 
     render(){
         return (<div>
-                {this.props.login?<MainPart/> :<RegistrationForm/>}
+                {this.props.login?<RegistrationForm/>:<MainPart/>}
             </div>
 
         );
