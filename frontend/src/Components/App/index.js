@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css'
 import RegistrationForm from '../RegistrationForm'
 import MainPart from '../MainPart'
-
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 class App extends Component {
