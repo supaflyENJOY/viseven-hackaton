@@ -121,7 +121,7 @@ class MainPart extends Component {
                         <a>Age:{this.state.profile.Age} years</a>
                         <a>Weight:{this.state.profile.Weight} kg</a>
                         <a>Height:{this.state.profile.Height} cm</a>
-                        <a>Phone number:<form /></a>
+                        <a>Phone number:<input type="text"></input></a>
                         <a>Chooooose time to train:</a>
                         <ol>{this.state.templates.map(template =>
                             <li>{template.name} : <form /></li>
