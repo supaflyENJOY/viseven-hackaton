@@ -1,0 +1,35 @@
+.exerciseListBox{
+    margin-top: 5vh;
+    margin-left: 5vw;
+    width: 28vw;
+    height: 80vh;
+    background-color: #002e47;
+    color: white;
+    overflow: scroll;
+}
+.exerciseListBox ul{
+    list-style: none;
+    margin-bottom: 3vh;
+    margin-top:3vh;
+    padding-left: 3vw;
+}
+section{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+.imageExercice{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: white;
+}
+.titleBox{
+    margin-left: 2vw;
+    padding-right: 10vw;
+}
+.showDetails {
+
+}
+.addExercise{
+
+}
