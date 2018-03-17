@@ -130,9 +130,6 @@ class MainPart extends Component {
                         )}</ul>
                     )}
                     </ul>
-
-
-
             </div>
             </div>
             );
