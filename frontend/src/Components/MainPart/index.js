@@ -80,7 +80,7 @@ class MainPart extends Component {
         return (<div>
             <Navbar/>
             <div
-                style={{"position": "absolute", left: "35vw", top: "8vh"}}
+                style={{"position": "absolute", left: "36vw", top: "16.7vh"}}
                 >
                 <Unity
                     src="/Build/build.json"
