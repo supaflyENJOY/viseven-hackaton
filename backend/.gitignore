@@ -1,4 +1,5 @@
 /bin
 /pkg
+/src/main/tmp/*
 /src/*
 !/src/main
