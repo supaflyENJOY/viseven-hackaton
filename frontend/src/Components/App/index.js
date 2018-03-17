@@ -12,11 +12,30 @@ class App extends Component {
         this.state = {
             login: false
         };
+        fetch('http://petrosyan.in:8080/v1/user/get', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if(typeof responseJson.error != 'undefined' || responseJson.logged == false) {
+                    this.setState({ login: false });
+                } else {
+
+                    this.setState({ login: true });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     render(){
         return (<div>
-                {this.state.login == true?<RegistrationForm/>:<MainPart/>}
+                {this.state.login == false?<RegistrationForm/>:<MainPart/>}
             </div>
 
         );
