@@ -22,6 +22,9 @@ class MainPart extends Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleCreate = this.handleCreate.bind(this);
         fetch('http://petrosyan.in:8080/v1/exercise/find', {
             method: 'POST',
             headers: {
@@ -108,6 +111,71 @@ class MainPart extends Component {
 
     }
 
+    handleCreate() {
+
+    }
+
+    handleAdd(id) { // TODO
+        if(-1 == this.state.currentActiveTemplate) {
+            alert("Please, select template!");
+        } else {
+            fetch('http://petrosyan.in:8080/v1/workout/'+this.state.currentActiveTemplate+'/add/'+id, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include'
+            }).then((response) => response.json())
+                .then((responseJson) => {
+                    if(responseJson != null && typeof responseJson.error == 'undefined') {
+                        var templates = this.state.templates;
+                        for(var i=0; i < templates.length; i++) {
+                            if (templates[i].ID == this.state.currentActiveTemplate) {
+                                templates[i].WorkoutExercises.push(responseJson);
+                                break;
+                            }
+                        }
+                        this.setState({ templates: templates });
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    }
+
+    handleRemove(id, from) {
+        fetch('http://petrosyan.in:8080/v1/workout/'+from+'/remove/'+id, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if(responseJson != null && typeof responseJson.error == 'undefined') {
+                    var templates = this.state.templates;
+                    for(var i=0; i < templates.length; i++) {
+                        if (templates[i].ID == from) {
+                            for(var j=0; j < templates[i].WorkoutExercises.length; j++) {
+                                if(templates[i].WorkoutExercises[j].ID == id) {
+                                    templates[i].WorkoutExercises.splice(j, 1);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    this.setState({ templates: templates });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     render(){
         return (<div>
             <Navbar/>
@@ -130,7 +198,7 @@ class MainPart extends Component {
                                 {<section id={exercise.ID}>
                                     <img className='imageExercise'src={exercise.Image} />
                                     <a className='titleBox'> {exercise.Title}</a>
-                                    <a className='addExercise' href='#'><img src={require('../img/plus.png')}/></a>
+                                    <a className='addExercise' href='#'><img src={require('../img/plus.png')} onClick={() => this.handleAdd(exercise.ID)}/></a>
                                     <a className='showDetails' href='#' onClick={() => { this.handleClick(exercise.ID) }}><img src={require('../img/menu-down.png')} style={this.state.currentShow == exercise.ID ? {transform: "rotate(180deg)"}: null}/></a>
                                 </section>}
                                 {this.state.currentShow == exercise.ID?
@@ -151,7 +219,7 @@ class MainPart extends Component {
                 </ul>
             </div>
             <div className='templateListBox'>
-                <div><a className='titleForBox'>Training templates</a> <a className='getNewTemplate'><img  src={require('../img/plus.png')}/></a></div>
+                <div><a className='titleForBox'>Training templates</a> <a className='getNewTemplate' href="#" onClick={() => { this.handleCreate() }}><img src={require('../img/plus.png')}/></a></div>
                 <ul  className='exercisesList_ForTemplate'>
                    <ul style={{"padding-top": "28px"}}> {this.state.templates.map(template =>
                        <ul style={{"padding-top": "28px"}} onClick={() => { this.handleSelect(template.ID) }}>
@@ -160,7 +228,7 @@ class MainPart extends Component {
                             <li>
                                 <img className='imageExercise' src={exercise.Image}/>
                                 <a className='titleBox'> {exercise.Title}</a>
-                                <a className='addExercise' href='#'><img src={require('../img/minus.png')}/></a>
+                                <a className='addExercise' href='#'><img src={require('../img/minus.png')} onClick={() => { this.handleRemove(exercise.ID, template.ID); }}/></a>
                             </li>
                         )}
                         </ul>
