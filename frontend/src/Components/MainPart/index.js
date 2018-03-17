@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css'
 import Navbar from '../Navbar';
+import exercise from "../api/exercise";
 
 import { RegisterExternalListener } from "react-unity-webgl";
 import Unity from "react-unity-webgl";
@@ -11,7 +12,8 @@ class MainPart extends Component {
         this.state = {
             currentShow: -1,
             exercises: [],
-            usedMuscles: []
+            usedMuscles: [],
+            templates:[[]]
         };
 
         RegisterExternalListener("updateSelectedMuscles", this.updateMuscles.bind(this));
@@ -113,6 +115,23 @@ class MainPart extends Component {
                         </li>
                     )}
                 </ul>
+            </div>
+            <div className='templateListBox'>{this.state.templates!==[[]]?
+                <a><img className='getNewTemplate' src={require('../img/bigPlus.png')}/></a>:
+                <ul className='exercisesList_ForTemplate'>
+                    {this.state.templates.map(template =>
+                        <ul>{template.map(exercise=>
+                            <li>
+                                <img className='imageExercice'/>
+                                <a className='titleBox'> {exercise.Title}</a>
+                                <a className='addExercise' href='#'><img src={require('../img/plus.png')}/></a>
+                            </li>
+                        )}</ul>
+                    )}
+                    </ul>
+            }
+
+
             </div>
             </div>
             );
