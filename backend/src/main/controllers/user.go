@@ -59,6 +59,11 @@ func (u *UserController) WorkoutTemplates() {
 			} else {
 				for i := range user.WorkoutTemplates {
 					o.LoadRelated(user.WorkoutTemplates[i], "WorkoutExercises")
+
+					for j := range user.WorkoutTemplates[i].WorkoutExercises {
+						o.LoadRelated(user.WorkoutTemplates[i].WorkoutExercises[j], "Muscles")
+
+					}
 				}
 				(u.Data["json"].(map[string]interface{}))["templates"] = user.WorkoutTemplates
 			}
