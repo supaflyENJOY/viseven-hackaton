@@ -3,7 +3,8 @@ import './index.css'
 import RegistrationForm from '../RegistrationForm'
 import MainPart from '../MainPart'
 import 'bootstrap/dist/css/bootstrap.css'
-
+import './style.css'
+import './media.css'
 
 class App extends Component {
     constructor() {
@@ -15,7 +16,7 @@ class App extends Component {
 
     render(){
         return (<div>
-                {this.props.login?<RegistrationForm/>:<MainPart/>}
+                {this.state.login == true?<RegistrationForm/>:<MainPart/>}
             </div>
 
         );

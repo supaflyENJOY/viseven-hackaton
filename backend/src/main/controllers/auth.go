@@ -14,6 +14,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 
 	"main/models"
+
+	"github.com/astaxie/beego/plugins/cors"
 )
 
 func IsUserLogin(ctx *context.Context) (int, bool) {
@@ -185,7 +187,14 @@ func init() {
 		beego.Error(err)
 	}
 
-	// global create a SocialAuth and auto set filter
+	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+		AllowOrigins:     []string{"http://*", "http://petrosyan.in:8000"},
+		AllowMethods:     []string{"PUT", "PATCH", "GET", "POST", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "*"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
+
 	SocialAuth = social.NewSocial("/v1/login/", new(socialAuther))
 	beego.InsertFilter("/v1/login/*/access", beego.BeforeRouter, HandleAccess)
 	beego.InsertFilter("/v1/login/*", beego.BeforeRouter, HandleRedirect)
