@@ -5,7 +5,7 @@
     height: 80vh;
     background-color: #002e47;
     color: white;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .exerciseListBox ul{
     list-style: none;
