@@ -127,7 +127,25 @@ class MainPart extends Component {
     }
 
     handleCreate() {
-
+        fetch('http://petrosyan.in:8080/v1/workout/create', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if(responseJson != null && typeof responseJson.error == 'undefined') {
+                    var templates = this.state.templates;
+                    responseJson.WorkoutExercises = [];
+                    templates.push(responseJson);
+                    this.setState({ templates: templates });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     handleAdd(id) { // TODO
@@ -177,7 +195,7 @@ class MainPart extends Component {
                             for(var j=0; j < templates[i].WorkoutExercises.length; j++) {
                                 if(templates[i].WorkoutExercises[j].ID == id) {
                                     templates[i].WorkoutExercises.splice(j, 1);
-                                    break;
+                                    //break;
                                 }
                             }
                             break;
