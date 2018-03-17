@@ -115,11 +115,8 @@ section{
     justify-content: center;
 
 }
-.Info a{
-    margin-left: 3vw;
-    margin-bottom: 2vh;
-    text-align: center;
-}
+
+
 .Info ol li{
     margin-left: 3.2vw;
 }
@@ -128,9 +125,18 @@ section{
     border-radius: 90px;
     color: white;
 }
-.buttonSubmit{
-    text-align: center;
-}
 
+effect-7,
+.effect-8,
+.effect-9{border: 1px solid #ccc; padding: 7px 14px 9px; transition: 0.4s;}
 
-
+.effect-7 ~ .focus-border:before,
+.effect-7 ~ .focus-border:after{content: ""; position: absolute; top: 0; left: 50%; width: 0; height: 2px; background-color: #3399FF; transition: 0.4s;}
+.effect-7 ~ .focus-border:after{top: auto; bottom: 0;}
+.effect-7 ~ .focus-border i:before,
+.effect-7 ~ .focus-border i:after{content: ""; position: absolute; top: 50%; left: 0; width: 2px; height: 0; background-color: #3399FF; transition: 0.6s;}
+.effect-7 ~ .focus-border i:after{left: auto; right: 0;}
+.effect-7:focus ~ .focus-border:before,
+.effect-7:focus ~ .focus-border:after{left: 0; width: 100%; transition: 0.4s;}
+.effect-7:focus ~ .focus-border i:before,
+.effect-7:focus ~ .focus-border i:after{top: 0; height: 100%; transition: 0.6s;}

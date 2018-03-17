@@ -200,23 +200,28 @@ class MainPart extends Component {
                         <p>{this.state.profile.Name}</p>
                     </div>
                     <div className='Info'>
-                        <form onSubmit={this.handleSubmit}>
-                        <p>Age:</p>
-                            <input type="text" value={this.state.value.age} onChange={this.handleChange} />
-                        <p>Weight:</p>
-                            <input type="text" value={this.state.value.weight} onChange={this.handleChange} />
-                        <p>Height:</p>
-                            <input type="text" value={this.state.value.height} onChange={this.handleChange} />
-                        <p>Phone number:</p>
-                            <input type="text" value={this.state.value.phone} onChange={this.handleChange} />
-                            <p><input className='buttonSubmit' type="submit" value="Submit" /></p>
-                        </form>
+                        <label>Age</label>
+                        <input className="effect-7" type="text" placeholder=""/>
 
+                            <span className="focus-border" />
+                        <label>Weight</label>
+                            <input className="effect-7" type="text" placeholder=""/>
+
+                                <span className="focus-border" />
+                        <label>Height</label>
+                                <input className="effect-7" type="text" placeholder=""/>
+
+                                    <span className="focus-border"/>
+                        <label>First Name</label>
+                                    <input className="effect-7" type="text" placeholder=""/>
+
+                                        <span className="focus-border"/>
                         <a>Choose time to train:</a>
                         <ol>{this.state.templates.map(template =>
-                            <li>{template.name} : <form /></li>
+                            <li>{template.Name} </li>
                         )}
                         </ol>
+
                     </div>
                 </div>
             <div
