@@ -3,9 +3,13 @@ html ,body{
     height: 100%;
     margin: 0;
     display: flex;
+    font-family: "Muller Regular" !important;
 
 }
-
+@font-face {
+    font-family: "Muller Regular";
+    src: url("../../Source/fonts/Fontfabric - MullerRegular.otf") format("opentype");
+}
 #root{
     background-color: black;
     width: 100%;
