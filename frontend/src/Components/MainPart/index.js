@@ -96,7 +96,7 @@ class MainPart extends Component {
                         <li key={exercise.ID}>
                             <div>
                                 {<section id={exercise.ID}>
-                                    <img className='imageExercice' />
+                                    <img className='imageExercise'src={exercise.Image} />
                                     <a className='titleBox'> {exercise.Title}</a>
                                     <a className='addExercise' href='#'><img src={require('../img/plus.png')}/></a>
                                     <a className='showDetails' href='#' onClick={() => { this.handleClick(exercise.ID) }}><img src={require('../img/menu-down.png')} style={this.state.currentShow == exercise.ID ? {transform: "rotate(180deg)"}: null}/></a>
@@ -104,6 +104,7 @@ class MainPart extends Component {
                                 {this.state.currentShow == exercise.ID?
                                 <div className='details'>
                                     <p>{exercise.Description}</p>
+                                    <p>Muscle trained:</p>
                                     <ul className='musclesList' >
                                         {exercise.Muscles.map(muscle =>
                                             <li id={muscle.ID}>{muscle.Name}</li>
