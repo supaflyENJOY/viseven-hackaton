@@ -15,7 +15,7 @@ import (
 
 	"main/models"
 
-	"github.com/astaxie/beego/plugins/cors"
+	"github.com/rs/cors"
 )
 
 func IsUserLogin(ctx *context.Context) (int, bool) {
@@ -39,6 +39,16 @@ func SetInfoToSession(ctx *context.Context, userSocial *social.UserSocial) {
 }
 
 func HandleRedirect(ctx *context.Context) {
+
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://*", "http://petrosyan.in:8000"},
+		AllowedMethods:   []string{"PUT", "PATCH", "GET", "POST", "OPTIONS"},
+		AllowedHeaders:   []string{"Origin", "Content-Type", "*"},
+		AllowCredentials: true,
+	})
+
+	c.HandlerFunc(ctx.ResponseWriter, ctx.Request)
+
 	redirect, err := SocialAuth.OAuthRedirect(ctx)
 	if err != nil {
 		beego.Error("SocialAuth.handleRedirect", err)
@@ -53,6 +63,15 @@ func HandleRedirect(ctx *context.Context) {
 }
 
 func HandleAccess(ctx *context.Context) {
+
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://*", "http://petrosyan.in:8000"},
+		AllowedMethods:   []string{"PUT", "PATCH", "GET", "POST", "OPTIONS"},
+		AllowedHeaders:   []string{"Origin", "Content-Type", "*"},
+		AllowCredentials: true,
+	})
+
+	c.HandlerFunc(ctx.ResponseWriter, ctx.Request)
 	redirect, userSocial, err := SocialAuth.OAuthAccess(ctx)
 	if err != nil {
 		beego.Error("SocialAuth.handleAccess", err)
@@ -186,14 +205,6 @@ func init() {
 	if err != nil {
 		beego.Error(err)
 	}
-
-	beego.InsertFilter("*", beego.BeforeExec, cors.Allow(&cors.Options{
-		AllowOrigins:     []string{"http://*", "http://petrosyan.in:8000"},
-		AllowMethods:     []string{"PUT", "PATCH", "GET", "POST", "OPTIONS"},
-		AllowHeaders:     []string{"Origin", "Content-Type", "*"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-	}))
 
 	SocialAuth = social.NewSocial("/v1/login/", new(socialAuther))
 	beego.InsertFilter("/v1/login/*/access", beego.BeforeRouter, HandleAccess)
