@@ -73,7 +73,7 @@ section{
     margin-top: 0.5vh;
 }
 .getNewTemplate{
-    top:1vh;
+    top: 0.6vh;
     right: .5vw;
     position: absolute;
 
@@ -85,7 +85,7 @@ section{
     background-color: #052026;
     padding-left: 20px;
     padding-top: 7px;
-    padding-bottom: 10px;
+    padding-bottom: 7px;
     color: white;
     position:fixed;
     width: 28vw;
@@ -96,4 +96,35 @@ section{
     border:1px solid white;
     border-radius: 24px;
 }
+.profileContainer{
+    position: absolute;
+    z-index: 1;
+    background-color: #031317;
+    color: white;
+    width:25vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.Info{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.Info a{
+    margin-left: 3vw;
+    margin-bottom: 2vh;
+}
+.Info ol li{
+    margin-left: 3.2vw;
+}
+.googlePhoto{
+    width: 90px;
+    border-radius: 90px;
+
+}
+
+
 
