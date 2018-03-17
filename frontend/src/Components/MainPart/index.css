@@ -111,11 +111,14 @@ section{
 .Info{
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align:center;
+    justify-content: center;
+
 }
 .Info a{
     margin-left: 3vw;
     margin-bottom: 2vh;
+    text-align: center;
 }
 .Info ol li{
     margin-left: 3.2vw;
@@ -124,7 +127,9 @@ section{
     width: 90px;
     border-radius: 90px;
     color: white;
-
+}
+.buttonSubmit{
+    text-align: center;
 }
 
 

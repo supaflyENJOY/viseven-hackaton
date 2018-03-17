@@ -15,8 +15,13 @@ class MainPart extends Component {
             exercises: [],
             usedMuscles: [],
             templates: [],
-            profile:[],
-            value: ''
+            profile: [],
+            value: {
+                age:'',
+                height:'',
+                weight:'',
+                phone:''
+            }
 
         };
 
@@ -213,16 +218,19 @@ class MainPart extends Component {
                         <p>{this.state.profile.Name}</p>
                     </div>
                     <div className='Info'>
-                        <a>Age:{this.state.profile.Age} years</a>
-                        <a>Weight:{this.state.profile.Weight} kg</a>
-                        <a>Height:{this.state.profile.Height} cm</a>
-                        <a>Phone number:
-                            <form onSubmit={this.handleSubmit}>
-                                <input type="text" value={this.state.value} onChange={this.handleChange} />
-                                <input type="submit" value="Submit" />
-                            </form>
-                        </a>
-                        <a>Chooooose time to train:</a>
+                        <form onSubmit={this.handleSubmit}>
+                        <p>Age:</p>
+                            <input type="text" value={this.state.value.age} onChange={this.handleChange} />
+                        <p>Weight:</p>
+                            <input type="text" value={this.state.value.weight} onChange={this.handleChange} />
+                        <p>Height:</p>
+                            <input type="text" value={this.state.value.height} onChange={this.handleChange} />
+                        <p>Phone number:</p>
+                            <input type="text" value={this.state.value.phone} onChange={this.handleChange} />
+                            <p><input className='buttonSubmit' type="submit" value="Submit" /></p>
+                        </form>
+
+                        <a>Choose time to train:</a>
                         <ol>{this.state.templates.map(template =>
                             <li>{template.name} : <form /></li>
                         )}
