@@ -10,7 +10,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            login: false
+            login: true
         };
         fetch('http://petrosyan.in:8080/v1/user/get', {
             method: 'GET',
