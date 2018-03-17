@@ -90,7 +90,7 @@ class MainPart extends Component {
             </div>
             <div className='exerciseListBox'>
                 <div ><a className='titleForBox'>Training exercises</a></div>
-                <ul>
+                <ul style={{"padding-top": "28px"}}>
 
                     {this.state.exercises.map(exercise=>
                         <li key={exercise.ID}>
@@ -104,7 +104,7 @@ class MainPart extends Component {
                                 {this.state.currentShow == exercise.ID?
                                 <div className='details'>
                                     <p>{exercise.Description}</p>
-                                    <ul className='musclesList'>
+                                    <ul className='musclesList' >
                                         {exercise.Muscles.map(muscle =>
                                             <li id={muscle.ID}>{muscle.Name}</li>
                                         )}
