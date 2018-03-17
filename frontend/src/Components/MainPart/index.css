@@ -99,8 +99,8 @@ section{
 .profileContainer{
     position: absolute;
     z-index: 1;
-    background-color: #031317;
-    color: white;
+    background-color: #959595;
+    color: #031317;
     width:25vw;
     height: 100vh;
     display: flex;
