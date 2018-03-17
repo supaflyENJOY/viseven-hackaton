@@ -212,7 +212,7 @@ class MainPart extends Component {
     render(){
         return (<div>
             <Navbar/>
-                <div className='profileContainer'>
+                <div className='profileContainer' style={{"display": "none"}}>
                     <div>
                         <img className='googlePhoto' src={this.state.profile.Image}/>
                         <p>{this.state.profile.Name}</p>
