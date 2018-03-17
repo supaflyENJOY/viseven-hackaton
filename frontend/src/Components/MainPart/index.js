@@ -15,7 +15,8 @@ class MainPart extends Component {
             exercises: [],
             usedMuscles: [],
             templates: [],
-            profile:[]
+            profile:[],
+            value: ''
 
         };
 
@@ -26,6 +27,8 @@ class MainPart extends Component {
         this.handleRemove = this.handleRemove.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         fetch('http://petrosyan.in:8080/v1/exercise/find', {
             method: 'POST',
             headers: {
@@ -103,6 +106,12 @@ class MainPart extends Component {
 
     }
 
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+    }
     handleSelect(id) {
         if(id == this.state.currentActiveTemplate) {
             this.setState({ currentActiveTemplate: -1 });
@@ -189,7 +198,12 @@ class MainPart extends Component {
                         <a>Age:{this.state.profile.Age} years</a>
                         <a>Weight:{this.state.profile.Weight} kg</a>
                         <a>Height:{this.state.profile.Height} cm</a>
-                        <a>Phone number:<form /></a>
+                        <a>Phone number:
+                            <form onSubmit={this.handleSubmit}>
+                                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </a>
                         <a>Chooooose time to train:</a>
                         <ol>{this.state.templates.map(template =>
                             <li>{template.name} : <form /></li>
