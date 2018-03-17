@@ -1,0 +1,78 @@
+html {
+  overflow: hidden;
+}
+body{
+  margin: 0;
+  overflow: hidden;
+}
+#content{
+  width: 100%;
+  background-color: #031317;
+  height: 100vh;
+}
+
+.logo{
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: bold;
+  top: 40px;
+  opacity: 0.6;
+}
+.row1{
+  height: 20vh;
+}
+.row2{
+  height: 60vh;
+}
+.row3{
+  height: 20vh;
+}
+.row2 h1{
+  margin-top: 70px;
+  font-size: 8rem;
+  color: #fff;
+  font-weight: bold;
+}
+.row2 p{
+  margin-top: 30px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.google img{
+  top: 25px;
+  position: absolute;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+}
+.row1 a:hover{
+  opacity: 0.8;
+}
+
+.row2 img{
+  right: 0;
+
+}
+
+.row2 button{
+  margin-top: 50px;
+  width: 150px;
+  height: 40px;
+  display: block;
+  background: transparent;
+  border-radius: 50px;
+  border: 3px solid #00C600;
+}
+.row2 a {
+  color: #fff;
+}
+.row2 a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.row2 button:hover{
+  text-decoration: none;
+  color: #fff;
+  background-color: #00C600;
+  transition: 0.5s ease-out;
+}
