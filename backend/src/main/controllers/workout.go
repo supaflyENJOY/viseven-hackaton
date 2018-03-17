@@ -143,7 +143,7 @@ func (u *WorkoutController) Remove() {
 			u.Data["json"] = "{\"error\": \"" + err.Error() + "\"}"
 		} else {
 			m2m := o.QueryM2M(&template, "WorkoutExercises")
-			m2m.Remove(exercise)
+			m2m.Remove(&exercise)
 			u.Data["json"] = "{\"result\": \"ok\"}"
 
 		}
