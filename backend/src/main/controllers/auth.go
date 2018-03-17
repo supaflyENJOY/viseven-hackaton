@@ -196,7 +196,7 @@ func init() {
 	}))
 
 	SocialAuth = social.NewSocial("/v1/login/", new(socialAuther))
-	beego.InsertFilter("/v1/login/*/access", beego.BeforeRouter, HandleAccess)
-	beego.InsertFilter("/v1/login/*", beego.BeforeRouter, HandleRedirect)
+	beego.InsertFilter("/v1/login/*/access", beego.FinishRouter, HandleAccess)
+	beego.InsertFilter("/v1/login/*", beego.FinishRouter, HandleRedirect)
 	// http://127.0.0.1:8080/v1/login/google
 }
