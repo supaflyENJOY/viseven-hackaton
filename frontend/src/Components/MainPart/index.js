@@ -14,7 +14,8 @@ class MainPart extends Component {
             currentActiveTemplate: -1,
             exercises: [],
             usedMuscles: [],
-            templates: []
+            templates: [],
+            profile:[]
 
         };
 
@@ -111,6 +112,23 @@ class MainPart extends Component {
     render(){
         return (<div>
             <Navbar/>
+                <div className='profileContainer'>
+                    <div>
+                        <img className='googlePhoto' src={this.state.profile.Image}/>
+                        <p>{this.state.profile.Name}</p>
+                    </div>
+                    <div className='Info'>
+                        <a>Age:{this.state.profile.Age} years</a>
+                        <a>Weight:{this.state.profile.Weight} kg</a>
+                        <a>Height:{this.state.profile.Height} cm</a>
+                        <a>Phone number:<form /></a>
+                        <a>Chooooose time to train:</a>
+                        <ol>{this.state.templates.map(template =>
+                            <li>{template.name} : <form /></li>
+                        )}
+                        </ol>
+                    </div>
+                </div>
             <div
                 style={{"position": "absolute", left: "36vw", top: "16.7vh"}}
                 >
