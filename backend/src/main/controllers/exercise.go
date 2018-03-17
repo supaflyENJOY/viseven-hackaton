@@ -37,6 +37,9 @@ func (u *ExerciseController) Get() {
 			var exercises []*models.WorkoutExercise
 			o := orm.NewOrm()
 			_, err := o.QueryTable(new(models.WorkoutExercise)).All(&exercises)
+			for i := range exercises {
+				o.LoadRelated(exercises[i], "Muscles")
+			}
 			if err != nil {
 				u.Data["json"] = "{\"error\": \"" + err.Error() + "\"}"
 				u.ServeJSON()
