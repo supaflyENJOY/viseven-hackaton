@@ -47,6 +47,7 @@ body{
 }
 .row1 a:hover{
   opacity: 0.8;
+  transition: 0.4s ease-out;
 }
 
 .row2 img{
