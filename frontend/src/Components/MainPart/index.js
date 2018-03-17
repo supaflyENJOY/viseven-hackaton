@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './index.css'
 import Navbar from '../Navbar';
 
+import { RegisterExternalListener } from "react-unity-webgl";
+import Unity from "react-unity-webgl";
+
 class MainPart extends Component {
     constructor(props) {
         super(props);
@@ -10,6 +13,9 @@ class MainPart extends Component {
             exercises: [],
             usedMuscles: []
         };
+
+        RegisterExternalListener("updateSelectedMuscles", this.updateMuscles.bind(this));
+
         this.handleClick = this.handleClick.bind(this);
         fetch('http://petrosyan.in:8080/v1/exercise/find', {
             method: 'POST',
@@ -19,15 +25,45 @@ class MainPart extends Component {
             },
             body: JSON.stringify({input: this.state.usedMuscles}),
             credentials: 'include'
-        }).then((response) => response.text())
+        }).then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson)
+                this.setState({ exercises: responseJson });
             })
             .catch((error) => {
                 console.error(error);
             });
+
     }
 
+
+    updateMuscles(str) {
+        if(str == null || str === "") {
+            this.setState({ usedMuscles: [] });
+        } else {
+
+            this.setState({ usedMuscles: str.split(',').filter(x => x != null).map(x => parseInt(x)) });
+        }
+        fetch('http://petrosyan.in:8080/v1/exercise/find', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({input: this.state.usedMuscles}),
+            credentials: 'include'
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if(responseJson != null && typeof responseJson.error == 'undefined') {
+                    this.setState({ exercises: responseJson });
+                } else {
+                    this.setState({ exercises: [] });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+    }
 
     handleClick(id) {
         if(id == this.state.currentShow) {
@@ -41,8 +77,18 @@ class MainPart extends Component {
     render(){
         return (<div>
             <Navbar/>
+            <div
+                style={{"position": "absolute", left: "35vw", top: "8vh"}}
+                >
+                <Unity
+                    src="/Build/build.json"
+                    loader="/Build/UnityLoader.js"
+                    width='28vw' height='80vh'
+                />
+            </div>
             <div className='exerciseListBox'>
                 <ul>
+
                     {this.state.exercises.map(exercise=>
                         <li key={exercise.ID}>
                             <div>
