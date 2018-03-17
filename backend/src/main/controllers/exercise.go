@@ -64,6 +64,10 @@ func (u *ExerciseController) Get() {
 			o := orm.NewOrm()
 			o.Raw(sql, ob.Input, len(ob.Input)).QueryRows(&exercises)
 
+			for i := range exercises {
+				o.LoadRelated(exercises[i], "Muscles")
+			}
+
 			u.Data["json"] = exercises
 		}
 	}
