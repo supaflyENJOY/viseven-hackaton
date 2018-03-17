@@ -17,9 +17,9 @@ class MainPart extends Component {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(this.state.usedMuscles),
+            body: JSON.stringify({input: this.state.usedMuscles}),
             credentials: 'include'
-        }).then((response) => response.json())
+        }).then((response) => response.text())
             .then((responseJson) => {
                 console.log(responseJson)
             })
