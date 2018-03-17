@@ -11,6 +11,7 @@ class MainPart extends Component {
         super(props);
         this.state = {
             currentShow: -1,
+            currentActiveTemplate: -1,
             exercises: [],
             usedMuscles: [],
             templates: []
@@ -20,6 +21,7 @@ class MainPart extends Component {
         RegisterExternalListener("updateSelectedMuscles", this.updateMuscles.bind(this));
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         fetch('http://petrosyan.in:8080/v1/exercise/find', {
             method: 'POST',
             headers: {
@@ -97,6 +99,15 @@ class MainPart extends Component {
 
     }
 
+    handleSelect(id) {
+        if(id == this.state.currentActiveTemplate) {
+            this.setState({ currentActiveTemplate: -1 });
+        } else {
+            this.setState({ currentActiveTemplate: id });
+        }
+
+    }
+
     render(){
         return (<div>
             <Navbar/>
@@ -143,8 +154,8 @@ class MainPart extends Component {
                 <div><a className='titleForBox'>Training templates</a> <a className='getNewTemplate'><img  src={require('../img/plus.png')}/></a></div>
                 <ul  className='exercisesList_ForTemplate'>
                    <ul style={{"padding-top": "28px"}}> {this.state.templates.map(template =>
-                       <ul style={{"padding-top": "28px"}}>
-                            <p>{template.Name}</p>
+                       <ul style={{"padding-top": "28px"}} onClick={() => { this.handleSelect(template.ID) }}>
+                            <p style={{"color": template.ID == this.state.currentActiveTemplate?"#F7FF00":""}}>{template.Name}</p>
                             {template.WorkoutExercises.map(exercise=>
                             <li>
                                 <img className='imageExercise' src={exercise.Image}/>
