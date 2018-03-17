@@ -13,201 +13,7 @@ class MainPart extends Component {
             currentShow: -1,
             exercises: [],
             usedMuscles: [],
-            templates: [
-                {
-                    "ID": 1,
-                    "User": {
-                        "ID": 1,
-                        "Height": 0,
-                        "Weight": 0,
-                        "Name": "",
-                        "Avatar": "",
-                        "Created": "0001-01-01T00:00:00Z",
-                        "Updated": "0001-01-01T00:00:00Z",
-                        "WorkoutTemplates": null
-                    },
-                    "Name": "One more perfect template",
-                    "WorkoutExercises": [],
-                    "WorkoutPlans": null
-                },
-                {
-                    "ID": 2,
-                    "User": {
-                        "ID": 1,
-                        "Height": 0,
-                        "Weight": 0,
-                        "Name": "",
-                        "Avatar": "",
-                        "Created": "0001-01-01T00:00:00Z",
-                        "Updated": "0001-01-01T00:00:00Z",
-                        "WorkoutTemplates": null
-                    },
-                    "Name": "One more perfect template",
-                    "WorkoutExercises": [
-                        {
-                            "ID": 1,
-                            "Title": "Example 1",
-                            "Description": "Example 1 description",
-                            "Image": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-                            "Muscles": [
-                                {
-                                    "ID": 1,
-                                    "Name": "Press",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 3,
-                                    "Name": "Ribs",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 5,
-                                    "Name": "Neck",
-                                    "WorkoutExercises": null
-                                }
-                            ],
-                            "WorkoutTemplates": null
-                        },
-                        {
-                            "ID": 1,
-                            "Title": "Example 1",
-                            "Description": "Example 1 description",
-                            "Image": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-                            "Muscles": [
-                                {
-                                    "ID": 1,
-                                    "Name": "Press",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 3,
-                                    "Name": "Ribs",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 5,
-                                    "Name": "Neck",
-                                    "WorkoutExercises": null
-                                }
-                            ],
-                            "WorkoutTemplates": null
-                        },
-                        {
-                            "ID": 1,
-                            "Title": "Example 1",
-                            "Description": "Example 1 description",
-                            "Image": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-                            "Muscles": [
-                                {
-                                    "ID": 1,
-                                    "Name": "Press",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 3,
-                                    "Name": "Ribs",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 5,
-                                    "Name": "Neck",
-                                    "WorkoutExercises": null
-                                }
-                            ],
-                            "WorkoutTemplates": null
-                        },
-                        {
-                            "ID": 1,
-                            "Title": "Example 1",
-                            "Description": "Example 1 description",
-                            "Image": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-                            "Muscles": [
-                                {
-                                    "ID": 1,
-                                    "Name": "Press",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 3,
-                                    "Name": "Ribs",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 5,
-                                    "Name": "Neck",
-                                    "WorkoutExercises": null
-                                }
-                            ],
-                            "WorkoutTemplates": null
-                        },
-                        {
-                            "ID": 1,
-                            "Title": "Example 1",
-                            "Description": "Example 1 description",
-                            "Image": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-                            "Muscles": [
-                                {
-                                    "ID": 1,
-                                    "Name": "Press",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 3,
-                                    "Name": "Ribs",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 5,
-                                    "Name": "Neck",
-                                    "WorkoutExercises": null
-                                }
-                            ],
-                            "WorkoutTemplates": null
-                        },
-                        {
-                            "ID": 1,
-                            "Title": "Example 1",
-                            "Description": "Example 1 description",
-                            "Image": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
-                            "Muscles": [
-                                {
-                                    "ID": 1,
-                                    "Name": "Press",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 3,
-                                    "Name": "Ribs",
-                                    "WorkoutExercises": null
-                                },
-                                {
-                                    "ID": 5,
-                                    "Name": "Neck",
-                                    "WorkoutExercises": null
-                                }
-                            ],
-                            "WorkoutTemplates": null
-                        }
-                    ],
-                    "WorkoutPlans": null
-                },
-                {
-                    "ID": 3,
-                    "User": {
-                        "ID": 1,
-                        "Height": 0,
-                        "Weight": 0,
-                        "Name": "",
-                        "Avatar": "",
-                        "Created": "0001-01-01T00:00:00Z",
-                        "Updated": "0001-01-01T00:00:00Z",
-                        "WorkoutTemplates": null
-                    },
-                    "Name": "One more perfect template",
-                    "WorkoutExercises": [],
-                    "WorkoutPlans": null
-                }
-            ]
+            templates: []
 
         };
 
@@ -225,6 +31,26 @@ class MainPart extends Component {
         }).then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ exercises: responseJson });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        fetch('http://petrosyan.in:8080/v1/user/templates/workout', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if(responseJson != null && typeof responseJson.templates != 'undefined') {
+                    console.log(responseJson.templates);
+                    this.setState({ templates: responseJson.templates });
+                } else{
+
+                    this.setState({ templates: [] });
+                }
             })
             .catch((error) => {
                 console.error(error);
@@ -318,15 +144,14 @@ class MainPart extends Component {
                 <ul  className='exercisesList_ForTemplate'>
                    <ul style={{"padding-top": "28px"}}> {this.state.templates.map(template =>
                        <ul style={{"padding-top": "28px"}}>
-                            <p>Template {template.ID}</p>
-                            {this.state.templates.map(user =>
-                                user.WorkoutExercises.map(exercise=>
+                            <p>{template.Name}</p>
+                            {template.WorkoutExercises.map(exercise=>
                             <li>
                                 <img className='imageExercise' src={exercise.Image}/>
                                 <a className='titleBox'> {exercise.Title}</a>
                                 <a className='addExercise' href='#'><img src={require('../img/minus.png')}/></a>
                             </li>
-                        ))}
+                        )}
                         </ul>
                    )}
                    </ul>
