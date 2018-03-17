@@ -20,7 +20,7 @@ func init() {
 
 func main() {
 	orm.Debug = true
-	err := orm.RunSyncdb("default", true, true)
+	err := orm.RunSyncdb("default", false, true)
 	if err != nil {
 		fmt.Println(err)
 	}

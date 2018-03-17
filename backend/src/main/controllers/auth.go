@@ -3,7 +3,6 @@ package controllers
 import (
 	"errors"
 	"fmt"
-	"strconv"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
@@ -13,6 +12,8 @@ import (
 
 	// just use mysql driver for example
 	_ "github.com/go-sql-driver/mysql"
+
+	"main/models"
 )
 
 func IsUserLogin(ctx *context.Context) (int, bool) {
@@ -40,12 +41,10 @@ func HandleRedirect(ctx *context.Context) {
 	if err != nil {
 		beego.Error("SocialAuth.handleRedirect", err)
 	}
-	fmt.Println(ctx.Input.CruSession)
-	num, ok := IsUserLogin(ctx)
-	ctx.WriteString("asd" + strconv.FormatInt(int64(num), 10))
-	ctx.WriteString("asd" + strconv.FormatBool(ok))
+
 	if len(redirect) > 0 {
 		ctx.WriteString("{\"redirect_uri\": \"" + redirect + "\"}")
+		//ctx.WriteString("<a href=\"" + redirect + "\" target=_blank>asdasdasad</a>")
 	} else {
 		ctx.WriteString("{\"error\": \"Error for redirect\"}")
 	}
@@ -66,7 +65,13 @@ func HandleAccess(ctx *context.Context) {
 	if err != nil {
 		beego.Error(err)
 	} else {
-		SetInfoToSession(ctx, userSocial)
+
+		err = models.CheckUserRegistration(userSocial.Id, userSocial.Data.AccessToken)
+		if err != nil {
+
+			SetInfoToSession(ctx, userSocial)
+			Logout(ctx)
+		}
 	}
 	if len(redirect) > 0 {
 		ctx.Redirect(302, beego.AppConfig.String("autorization_redirect_uri"))
