@@ -44,6 +44,7 @@ class MainPart extends Component {
         return (<div>
             <Navbar/>
             <div className='exerciseListBox'>
+                <div ><a className='titleForBox'>Training exercises</a></div>
                 <ul>
                     {this.state.exercises.map(exercise=>
                         <li key={exercise.ID}>
@@ -70,8 +71,8 @@ class MainPart extends Component {
                     )}
                 </ul>
             </div>
-            <div className='templateListBox'>{this.state.templates!==[[]]?
-                <a><img className='getNewTemplate' src={require('../img/bigPlus.png')}/></a>:
+            <div className='templateListBox'>
+                <div><a className='titleForBox'>Training templates</a> <a className='getNewTemplate'><img  src={require('../img/plus.png')}/></a></div>
                 <ul className='exercisesList_ForTemplate'>
                     {this.state.templates.map(template =>
                         <ul>{template.map(exercise=>
@@ -83,7 +84,7 @@ class MainPart extends Component {
                         )}</ul>
                     )}
                     </ul>
-            }
+
 
 
             </div>
