@@ -1,0 +1,12 @@
+.navbar{
+    color: #ffffff;
+    margin-top: 2vh;
+}
+.profileIcon{
+    margin-left: 5vw;
+    transform: translateX(-16px);
+}
+.googleicon{
+    margin-right: 5vw;
+    transform: translateX(16px);
+}
