@@ -6,6 +6,7 @@
     background-color: #002e47;
     color: white;
     overflow-y: scroll;
+    position: absolute;
 }
 .exerciseListBox ul{
     list-style: none;
@@ -32,4 +33,19 @@ section{
 }
 .addExercise{
 
+}
+
+.templateListBox{
+    margin-top: 8vh;
+    margin-right: 5vw;
+    width: 28vw;
+    height: 80vh;
+    background-color: #002e47;
+    color: white;
+    overflow-y: scroll;
+    position: absolute;
+    right:0;
+}
+.templateListBox ul {
+    list-style: none;
 }
