@@ -187,7 +187,7 @@ func init() {
 		beego.Error(err)
 	}
 
-	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+	beego.InsertFilter("*", beego.BeforeExec, cors.Allow(&cors.Options{
 		AllowOrigins:     []string{"http://*", "http://petrosyan.in:8000"},
 		AllowMethods:     []string{"PUT", "PATCH", "GET", "POST", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "*"},
@@ -196,7 +196,7 @@ func init() {
 	}))
 
 	SocialAuth = social.NewSocial("/v1/login/", new(socialAuther))
-	beego.InsertFilter("/v1/login/*/access", beego.FinishRouter, HandleAccess)
-	beego.InsertFilter("/v1/login/*", beego.FinishRouter, HandleRedirect)
+	beego.InsertFilter("/v1/login/*/access", beego.BeforeRouter, HandleAccess)
+	beego.InsertFilter("/v1/login/*", beego.BeforeRouter, HandleRedirect)
 	// http://127.0.0.1:8080/v1/login/google
 }
